@@ -55,7 +55,7 @@ patch_shape = (int(jnp.sqrt(x_dim)), int(jnp.sqrt(x_dim)))
 y_dim = _Y.shape[1]
 
 lab_estimator = "current" # "voltage" # "spike"
-n_iter = 30 ## number discrete time steps to simulate
+n_iter = 100 ## number discrete time steps to simulate
 mb_size = 250
 n_batches = int(_X.shape[0]/mb_size)
 save_point = 5 ## save model params every epoch/iteration modulo "save_point"
