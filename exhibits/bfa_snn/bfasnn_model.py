@@ -13,9 +13,9 @@ import ngclearn.utils.weight_distribution as dist
 
 
 ## SNN model co-routines
-def load_model(exp_dir="exp", dt=3, T=100):
+def load_model(exp_dir="exp", dt=3, T=100, in_dim=2580, out_dim=2580):
     _key = random.PRNGKey(time.time_ns())
-    model = BFA_SNN(_key, in_dim=1, out_dim=1, save_init=False, dt=dt, T=T)
+    model = BFA_SNN(_key, in_dim=in_dim, out_dim=out_dim, save_init=False, dt=dt, T=T)
     model.load_from_disk(exp_dir)
     return model
 
@@ -53,6 +53,8 @@ class BFA_SNN():
     # Define Functions
     def __init__(self, dkey, in_dim=1, out_dim=1, hid_dim=1024, T=100, dt=0.25,
                  tau_m=20., exp_dir="exp", model_name="snn_bfa", loadDir=None, **kwargs):
+        print("input_dimension: ", in_dim)
+        print("output_dimension: ", out_dim)
         self.exp_dir = exp_dir
         self.model_name = model_name
         makedir(exp_dir)
